@@ -14,18 +14,29 @@ import { HeaderComponent } from "../../header/header.component";
 })
 
 export class RentalFormComponent implements OnInit {
-searchRental() {
-  this.http.get('http://localhost:8080/api/v4/search-rent-by-id/'+ this.inputItemId).subscribe(
-    data => {
-      this.rental = data;
-    },
-    error => {
-      alert("Rental creation not successfull")
-    }
-  )
-}
+  updateRental() {
+    this.http.post('http://localhost:8080/api/v4/update-rental', this.rental).subscribe(
+      response => {
+        alert("Rental Updated Successfully")
+      },
+      error => {
+        alert("Rental update not successfull")
+      }
+    );
+    console.log(this.rental);
+  }
+  searchRental() {
+    this.http.get('http://localhost:8080/api/v4/search-rent-by-id/' + this.inputItemId).subscribe(
+      data => {
+        
+      },
+      error => {
+        alert("Rental creation not successfull")
+      }
+    )
+  }
   deleteRental() {
-    this.http.delete('http://localhost:8080/api/v4/delete-rental/'+ this.inputItemId).subscribe(
+    this.http.delete('http://localhost:8080/api/v4/delete-rental/' + this.inputItemId).subscribe(
       data => {
         alert("Rental added Successfully")
       },
@@ -43,6 +54,7 @@ searchRental() {
   constructor(private http: HttpClient) { }
 
   rental = {
+    rentId: "",
     rentDate: "",
     returnDate: "",
     dueDate: "",
