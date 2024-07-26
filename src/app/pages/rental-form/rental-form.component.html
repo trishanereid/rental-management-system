@@ -7,34 +7,34 @@
                 <form>
                     <div data-mdb-input-init class="form-outline mb-4">
                         <label class="form-label" for="itemIdField">Item ID</label>
-                        <input type="text" id="itemIdField" class="form-control" [(ngModel)]="inputItemId" name="inputItemId" />
+                        <input type="text" id="itemIdField" class="form-control" [(ngModel)]="inputItemId" name="inputItemId"  />
                     </div>
 
 
                     <div data-mdb-input-init class="form-outline mb-4">
                         <label class="form-label" for="rentalDayField">Rental Date</label>
-                        <input type="date" id="rentalDayField" class="form-control" [(ngModel)]="inputRentalDate" name="inputRentalDate" />
+                        <input type="date" id="rentalDayField" class="form-control" [(ngModel)]="rental.rentDate" name="inputRentalDate" />
                     </div>
 
                     <div data-mdb-input-init class="form-outline mb-4">
                         <label class="form-label" for="returnDayField">Return Day</label>
-                        <input type="date" id="returnDayField" class="form-control" [(ngModel)]="inputReturnDate" name="inputReturnDate" />
+                        <input type="date" id="returnDayField" class="form-control" [(ngModel)]="rental.returnDate" name="inputReturnDate" />
                     </div>
 
                     <div data-mdb-input-init class="form-outline mb-4">
                         <label class="form-label" for="dueDayField">due Day</label>
-                        <input type="date" id="dueDayField" class="form-control" [(ngModel)]="inputDueDate" name="inputDueDate" />
+                        <input type="date" id="dueDayField" class="form-control" [(ngModel)]="rental.dueDate" name="inputDueDate" />
                     </div>
 
                     <div data-mdb-input-init class="form-outline mb-4">
                         <label class="form-label" for="totalField">Total Cost</label>
-                        <input type="number" id="totalField" class="form-control" [(ngModel)]="total" name="total" />
+                        <input type="number" id="totalField" class="form-control" [(ngModel)]="rental.totalCost" name="total" />
                     </div>
 
                     <!-- Submit button -->
                     <button data-mdb-ripple-init type="button" class="btn btn-primary btn-block" (click)="addRental()">Add</button>
-                    <button data-mdb-ripple-init type="button" class="btn btn-primary btn-block">Update</button>
-                    <button data-mdb-ripple-init type="button" class="btn btn-primary btn-block">Delete</button>
+                    <button data-mdb-ripple-init type="button" class="btn btn-primary btn-block" (click)="deleteRental()" >Delete</button>
+                    <button data-mdb-ripple-init type="button" class="btn btn-primary btn-block" (click)="searchRental()">Search</button>
                 </form>
             </div>
         </div>
