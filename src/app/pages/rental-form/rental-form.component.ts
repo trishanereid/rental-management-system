@@ -28,7 +28,7 @@ export class RentalFormComponent implements OnInit {
   searchRental() {
     this.http.get('http://localhost:8080/api/v4/search-rent-by-id/' + this.inputItemId).subscribe(
       data => {
-        
+        alert("Rental Search successfull")
       },
       error => {
         alert("Rental creation not successfull")
