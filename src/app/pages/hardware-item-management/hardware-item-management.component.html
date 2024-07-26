@@ -1,0 +1,66 @@
+<app-header></app-header>
+
+<div class="content">
+    <div class="container mt-5">
+        <div>
+            <h2>Hardware Items</h2>
+        </div>
+        
+        <form class="form-inline mb-5">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search by Item Id"
+                aria-label="Search" [(ngModel)] = searchItemId name="searchItemId" >
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="searchItemById()" >Search</button>
+        </form>
+    
+        <h2 id="itemList">Item List</h2>
+        <table class="table table-bordered mb-5">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Rental per day</th>
+                    <th>FIne Per day</th>
+                    <th>Availablility</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Sample data, replace with dynamic data -->
+                <tr *ngFor="let item of itemList">
+                    <td> {{item.itemId}} </td>
+                    <td> {{item.name}} </td>
+                    <td> {{item.rentalPerDay}} </td>
+                    <td> {{item.finePerDay}} </td>
+                    <td> {{item.availability}} </td>
+                    <td>
+                        <button class="btn btn-primary" (click)="viewItemDetails(item)">View Details</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div *ngIf="isModalOpen" class="modal show d-block" style="background: rgba(0,0,0,0.5);">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{{ selectedItem?.name }}</h5>
+                <button type="button" class="btn-close" aria-label="Close" (click)="closeItemDetails()"></button>
+            </div>
+            <div class="modal-body">
+                <p>ID: {{selectedItem?.itemId}} </p>
+                <p>Rental per day: {{ selectedItem?.rentalPerDay }}</p>
+                <p>Fine per day: {{ selectedItem?.finePerDay }}</p>
+                <p>Availablility: {{ selectedItem?.availability }}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="rentItem(selectedItem)">rent</button>
+                <button type="button" class="btn btn-secondary" (click)="deleteItem(selectedItem)">delete</button>
+                <button type="button" class="btn btn-secondary" (click)="updateItem(selectedItem)">update</button>
+            </div>
+        </div>
+    </div>
+</div>
